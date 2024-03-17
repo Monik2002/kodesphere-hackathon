@@ -1,8 +1,16 @@
 .bulb {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  width: 200px;
+}
+
+.bulb button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
 }

@@ -1,17 +1,19 @@
+import FanControl from "./FanControl";
+import BulbControl from "./BulbControl";
+import LedControl from "./LedControl";
+import ACControl from "./ACControl";
 import "./App.css";
-import Fan from "./Fan";
-import Bulb from "./Bulb";
-import Led from "./Led";
-import AirConditioner from "./AirConditioner";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Simulation page for Silver Wave</h1>
-      <Fan />
-      <Bulb />
-      <Led />
-      <AirConditioner />
+    <div className="container">
+      <h1>Smart Home Control Panel</h1>
+      <div className="device-container">
+        <FanControl />
+        <BulbControl />
+        <LedControl />
+        <ACControl />
+      </div>
     </div>
   );
 }
