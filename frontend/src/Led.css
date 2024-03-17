@@ -1,0 +1,12 @@
+.led {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #000;
+}
+.led-switch {
+  margin: 20px;
+}
+

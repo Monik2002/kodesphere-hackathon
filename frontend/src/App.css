@@ -1,0 +1,88 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.device {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.device button {
+  margin-top: 20px;
+}
+
+.device input {
+  margin-top: 20px;
+}
+
+.device-speed {
+  display: flex;
+  align-items: center;
+}
+
+.device-speed button {
+  margin: 0 10px;
+}
+
+.device-temp {
+  display: flex;
+  align-items: center;
+}
+
+.device-temp button {
+  margin: 0 10px;
+}
+
+.device-temp input {
+  margin: 0 10px;
+}
+
+.device-status {
+  margin-top: 20px;
+}
+
+.device-status button {
+  margin: 0 10px;
+}
+
+.device-status input {
+  margin: 0 10px;
+}
+
+.device-status select {
+  margin: 0 10px;
+}
+
+.device-status label {
+  margin: 0 10px;
+}
+
+.device-status input[type="checkbox"] {
+  margin: 0 10px;
+}
+
+.device-status input[type="radio"] {
+  margin: 0 10px;
+}
+
+.device-status input[type="range"] {
+  margin: 0 10px;
+}
+
+.device-status input[type="color"] {
+  margin: 0 10px;
+}
+
+
+
