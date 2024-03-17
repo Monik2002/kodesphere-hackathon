@@ -1,0 +1,64 @@
+body, html {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.waveWrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  z-index: -1;
+  background-image: linear-gradient(to top, #e86ad7 20%, #734caafe 80%);
+}
+
+.waveWrapperInner {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
+  bottom: -1px;
+}
+
+.bgTop {
+  z-index: 15;
+  opacity: 0.5;
+  background-image: url('path/to/wave-top.png');
+}
+
+.bgMiddle {
+  z-index: 10;
+  opacity: 0.75;
+  background-image: url('path/to/wave-mid.png');
+}
+
+.bgBottom {
+  z-index: 5;
+  background-image: url('path/to/wave-bot.png');
+}
+
+.wave {
+  position: absolute;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background-repeat: repeat no-repeat;
+  background-position: 0 bottom;
+  transform-origin: center bottom;
+}
+
+.waveTop {
+  background-size: 50% 100px;
+}
+
+.waveMiddle {
+  background-size: 50% 120px;
+}
+
+.waveBottom {
+  background-size: 50% 100px;
+}

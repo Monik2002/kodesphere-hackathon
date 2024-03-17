@@ -23,3 +23,10 @@
   cursor: pointer;
 }
 
+.fan-icon-on {
+  color: green;
+}
+
+.fan-icon-off {
+  color: red;
+}

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Switch from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
+import { FaFan } from "react-icons/fa";
 import "./Fan.css";
 
 const IOSSwitch = styled(Switch)(({ theme }) => ({
@@ -106,7 +107,11 @@ function FanControl() {
   return (
     <div className="device-container">
       <div className="device fan">
-        <h2>Fan Control</h2>
+        <h2>
+          <FaFan className={isOn ? "fan-icon-on" : "fan-icon-off"} /> Fan
+          Control
+        </h2>
+        {/* <h2>Fan Control</h2> */}
         <div style={{ display: "flex", alignItems: "center" }}>
           <button
             onClick={() => handleSpeedChange(speed - 1)}
