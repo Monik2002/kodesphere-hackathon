@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Switch from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
+import { IoIosFlashlight } from "react-icons/io";
 import "./Led.css";
 
 const IOSSwitch = styled(Switch)(({ theme }) => ({
@@ -57,15 +58,32 @@ function LedControl() {
   const [color, setColor] = useState("#ffffff");
   const [isOn, setIsOn] = useState(false);
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "https://kodessphere-api.vercel.app/devices/Gz4xJSN"
+      );
+      const ledData = response.data.led;
+      setColor(ledData.color);
+      setIsOn(ledData.isOn);
+    } catch (error) {
+      console.error("Error fetching LED data:", error);
+    }
+  };
+
   const handleToggle = async () => {
     try {
-      const newValue = isOn ? 0 : 1;
+      const newValue = !isOn;
       await axios.post("https://kodessphere-api.vercel.app/devices", {
         teamid: "Gz4xJSN",
         device: "led",
         value: newValue,
       });
-      setIsOn(!isOn);
+      setIsOn(newValue);
     } catch (error) {
       console.error("Error controlling LED:", error);
     }
@@ -86,7 +104,9 @@ function LedControl() {
 
   return (
     <div className="led">
-      <h2>Led Control</h2>
+      <h2>
+        <IoIosFlashlight /> Led Control
+      </h2>
       <input
         type="color"
         value={color}
@@ -96,7 +116,7 @@ function LedControl() {
       <IOSSwitch
         checked={isOn}
         onChange={handleToggle}
-        inputProps={{ "aria-label": "Toggle fan switch" }}
+        inputProps={{ "aria-label": "Toggle LED switch" }}
       />
     </div>
   );

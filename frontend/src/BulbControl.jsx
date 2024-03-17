@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Switch from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
+import { GiLightBulb } from "react-icons/gi";
+import { FaRegLightbulb } from "react-icons/fa";
 import "./Bulb.css";
 
 const IOSSwitch = styled(Switch)(({ theme }) => ({
@@ -56,15 +58,31 @@ const IOSSwitch = styled(Switch)(({ theme }) => ({
 function BulbControl() {
   const [isOn, setIsOn] = useState(false);
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "https://kodessphere-api.vercel.app/devices/Gz4xJSN"
+      );
+      const bulbData = response.data.bulb;
+      setIsOn(bulbData.isOn);
+    } catch (error) {
+      console.error("Error fetching bulb data:", error);
+    }
+  };
+
   const handleToggle = async () => {
     try {
-      const newValue = isOn ? 0 : 1;
+      const newValue = !isOn;
       await axios.post("https://kodessphere-api.vercel.app/devices", {
         teamid: "Gz4xJSN",
         device: "bulb",
         value: newValue,
       });
-      setIsOn(!isOn);
+      setIsOn(newValue);
     } catch (error) {
       console.error("Error controlling bulb:", error);
     }
@@ -72,12 +90,12 @@ function BulbControl() {
 
   return (
     <div className="bulb">
-      <h2>Bulb Control</h2>
+      <h2>{isOn ? <GiLightBulb /> : <FaRegLightbulb />} Bulb Control</h2>
       <span style={{ marginBottom: "10px" }}></span>
       <IOSSwitch
         checked={isOn}
         onChange={handleToggle}
-        inputProps={{ "aria-label": "Toggle fan switch" }}
+        inputProps={{ "aria-label": "Toggle bulb switch" }}
       />
     </div>
   );

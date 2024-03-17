@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import Switch from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
+import { FaSnowflake } from "react-icons/fa";
 import "./AirConditioner.css";
 
 const IOSSwitch = styled(Switch)(({ theme }) => ({
@@ -59,13 +60,13 @@ function ACControl() {
 
   const handleToggle = async () => {
     try {
-      const newValue = isOn ? 0 : 1;
+      const newValue = !isOn;
       await axios.post("https://kodessphere-api.vercel.app/devices", {
         teamid: "Gz4xJSN",
         device: "ac",
         value: { state: newValue, temp: temp },
       });
-      setIsOn(!isOn);
+      setIsOn(newValue);
     } catch (error) {
       console.error("Error controlling AC:", error);
     }
@@ -77,7 +78,7 @@ function ACControl() {
         await axios.post("https://kodessphere-api.vercel.app/devices", {
           teamid: "Gz4xJSN",
           device: "ac",
-          value: { state: isOn ? 1 : 0, temp: newTemp },
+          value: { state: isOn, temp: newTemp },
         });
         setTemp(newTemp);
       } catch (error) {
@@ -88,7 +89,9 @@ function ACControl() {
 
   return (
     <div className="air-conditioner">
-      <h2>AC Control</h2>
+      <h2>
+        <FaSnowflake /> AC Control
+      </h2>
       <div style={{ display: "flex", alignItems: "center" }}>
         <button
           onClick={() => handleTempChange(temp - 1)}
@@ -108,7 +111,7 @@ function ACControl() {
       <IOSSwitch
         checked={isOn}
         onChange={handleToggle}
-        inputProps={{ "aria-label": "Toggle fan switch" }}
+        inputProps={{ "aria-label": "Toggle AC switch" }}
       />
     </div>
   );

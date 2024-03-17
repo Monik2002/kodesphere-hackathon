@@ -30,3 +30,16 @@
 .fan-icon-off {
   color: red;
 }
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.fan-icon-on {
+  animation: rotate 2s linear infinite;
+}
