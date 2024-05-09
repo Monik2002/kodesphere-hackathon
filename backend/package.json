@@ -1,8 +1,12 @@
 {
   "name": "backend",
   "version": "1.0.0",
+  "main": "server.js",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
-    "start": "node src/app.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
