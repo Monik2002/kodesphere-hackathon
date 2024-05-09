@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Switch from "@mui/material/Switch";
+import { styled } from "@mui/material/styles";
 import "./Fan.css";
 
 const IOSSwitch = styled(Switch)(({ theme }) => ({
@@ -107,7 +109,12 @@ function FanControl() {
         <button onClick={() => handleSpeedChange(speed - 1)}>-</button>
         <span>{speed}</span>
         <button onClick={() => handleSpeedChange(speed + 1)}>+</button>
-        <button onClick={handleToggle}>{isOn ? "Turn Off" : "Turn On"}</button>
+        {/* <button onClick={handleToggle}>{isOn ? "Turn Off" : "Turn On"}</button> */}
+        <IOSSwitch
+          checked={isOn}
+          onChange={handleToggle}
+          inputProps={{ "aria-label": "Toggle Fan Switch" }}
+        />
       </div>
     </div>
   );
